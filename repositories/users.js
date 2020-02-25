@@ -17,24 +17,27 @@ class UsersRepository {
 
     async getAll() {
         // open the file
-        const contents = await fs.promises.readFile(this.filename, {
-            encoding: 'utf8'
-        });
+        return JSON.parse(
+            await fs.promises.readFile(this.filename, {
+                encoding: 'utf8'
+            })
+        );
+    }
 
-        // Read its contents
-        console.log(contents);
+    async create(attrs) {
+        const records = await this.getAll();
+        records.push(attrs);
 
-        // PArse contents
-
-        // return the parsed
+        await fs.promises.writeFile(this.filename, JSON.stringify(records));
     }
 }
 
 // testing code - helper function
 const test = async () => {
     const repo = new UsersRepository('users.json');
-
-    await repo.getAll();
+    await repo.create({ email: 'test@test.com', password: 'password' });
+    const users = await repo.getAll();
+    console.log(users);
 };
 
 test();
