@@ -1,4 +1,6 @@
+const express = require('express');
 const userRepo = require('../../repositories/users');
+const router = express.Router();
 
 router.get('/signup', (req, res) => {
     res.send(`
