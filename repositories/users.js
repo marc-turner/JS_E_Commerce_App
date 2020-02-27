@@ -56,7 +56,7 @@ class UsersRepository {
     async writeAll(records) {
         await fs.promises.writeFile(
             this.filename,
-            JSON.stringify(records, null, 2)
+            JSON.stringify(records, null, 4)
         );
     }
 
