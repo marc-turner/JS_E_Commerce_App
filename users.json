@@ -1,10 +1,12 @@
 [
   {
-    "email": "test@test.com"
-  },
-  {
     "email": "marc_t@rocketmail.com",
     "password": "qwerty",
     "id": "5cdfe14e"
+  },
+  {
+    "email": "test@test.com",
+    "password": "pass",
+    "id": "799f927e"
   }
 ]
