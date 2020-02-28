@@ -3,17 +3,39 @@ const { getError } = require('../../helpers');
 
 module.exports = ({ req, errors }) => {
     return layout({
-        content: `<div>
-                Your id is: ${req.session.userId}
+        content: `
+        <div class="container">
+            <div class="columns is-centered">
+            <div class="column is-one-quarter">
                 <form method="POST">
-                    <input type='text' name='email' placeholder='email'/>
-                    ${getError(errors, 'email')}
-                    <input type='password' name='password' placeholder='password'/>
-                    ${getError(errors, 'password')}
-                    <input type='password' name='confirmPassword' placeholder='confirm password'/>
-                    ${getError(errors, 'confirmPassword')}
-                    <button>Sign Up!</button>
+                <h1 class="title">Sign Up</h1>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <input required class="input" placeholder="Email" name="email" />
+                    <p class="help is-danger">${getError(errors, 'email')}</p>
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <input required class="input" placeholder="Password" name="password" type="password" />
+                    <p class="help is-danger">${getError(
+                        errors,
+                        'password'
+                    )}</p>
+                </div>
+                <div class="field">
+                    <label class="label">Password Confirmation</label>
+                    <input required class="input" placeholder="Password Confirmation" name="passwordConfirmation" type="password" />
+                    <p class="help is-danger">${getError(
+                        errors,
+                        'passwordConfirmation'
+                    )}</p>
+                </div>
+                <button class="button is-primary">Submit</button>
                 </form>
-            </div>`
+                <a href="/signin">Have an account? Sign In</a>
+            </div>
+            </div>
+        </div>
+        `
     });
 };
